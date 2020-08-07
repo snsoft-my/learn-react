@@ -6,7 +6,7 @@ class LineChart extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      matchData: [],
+      matchData: this.props.publicMatches,
       lineData: {
         labels: ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '> 60'],
         datasets: [
@@ -26,7 +26,6 @@ class LineChart extends Component {
 
   async componentDidMount() {
     this.setState({
-      matchData: await callAPI('/publicMatches'),
       isLoaded: true,
     })
     this.matchTimeCount()
